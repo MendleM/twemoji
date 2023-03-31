@@ -15,7 +15,7 @@ Future<void> main(List<String> args) async {
   // The script's path is the /bin directory of the Twemoji package so to navigate
   // to the assets path we go up once for the file and a second time to navigate
   // out of the /bin directory.
-  final twemojiPackageAbsolutePath = Directory(Platform.script.toFilePath()).parent.path;
+  final twemojiPackageAbsolutePath = Directory(Platform.script.toFilePath()).parent.parent.path;
 
   final assetsPath = '$twemojiPackageAbsolutePath/assets';
   final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
