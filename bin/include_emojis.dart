@@ -21,8 +21,8 @@ Future<void> main(List<String> args) async {
   final twemojiPackageAbsolutePath =
       packageUri!.toFilePath().substring(0, packageUri.toFilePath().lastIndexOf('/'));
 
-  final assetsPath = '$twemojiPackageAbsolutePath/assets';
-  final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
+  final assetsPath = '$twemojiPackageAbsolutePath/../assets';
+  final allAssetsPath = '$twemojiPackageAbsolutePath/../all_assets';
   final allAssetsDirectory = Directory(allAssetsPath);
 
   if (!allAssetsDirectory.existsSync()) {
