@@ -1,6 +1,6 @@
 # twemoji
 
-Twitter Emojis for Flutter, this package supports svg and png 72x72 emojis
+Fixes include_emojis for Twitter Emojis for Flutter, this package supports svg and png 72x72 emojis
 
 ## Usage
 
