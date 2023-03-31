@@ -15,15 +15,19 @@ Future<void> main(List<String> args) async {
   // The script's path is the /bin directory of the Twemoji package so to navigate
   // to the assets path we go up once for the file and a second time to navigate
   // out of the /bin directory.
-  final twemojiPackageAbsolutePath =
-      Directory(Platform.script.toFilePath()).parent.parent.path;
+  final twemojiPackageAbsolutePath = Directory(Platform.script.toFilePath()).parent.parent.path;
 
   final assetsPath = '$twemojiPackageAbsolutePath/assets';
+  final assetsDirectory = Directory(assetsPath);
   final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
   final allAssetsDirectory = Directory(allAssetsPath);
 
   if (!allAssetsDirectory.existsSync()) {
     allAssetsDirectory.createSync();
+  }
+
+  if (!assetsDirectory.existsSync()) {
+    assetsDirectory.createSync();
   }
 
   // Move all assets to an all_assets backup folder.
@@ -67,10 +71,8 @@ Future<void> main(List<String> args) async {
 
     if (unicodeStr.isNotEmpty) {
       copyEmojisFutures.addAll([
-        File('$allAssetsPath/png/$unicodeStr.png')
-            .copy('$assetsPath/png/$unicodeStr.png'),
-        File('$allAssetsPath/svg/$unicodeStr.svg')
-            .copy('$assetsPath/svg/$unicodeStr.svg'),
+        File('$allAssetsPath/png/$unicodeStr.png').copy('$assetsPath/png/$unicodeStr.png'),
+        File('$allAssetsPath/svg/$unicodeStr.svg').copy('$assetsPath/svg/$unicodeStr.svg'),
       ]);
     }
   }
