@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'dart:io';
+import 'dart:isolate';
+
 import 'package:characters/src/extensions.dart';
 import 'package:io/io.dart';
 import 'package:twemoji/src/utils.dart';
@@ -15,9 +17,9 @@ Future<void> main(List<String> args) async {
   // The script's path is the /bin directory of the Twemoji package so to navigate
   // to the assets path we go up once for the file and a second time to navigate
   // out of the /bin directory.
-  final twemojiPackageAbsolutePath = Directory(Platform.script.toFilePath()).parent.parent.path;
-
-  print(twemojiPackageAbsolutePath);
+  final packageUri = await Isolate.resolvePackageUri(Uri.parse('package:twemoji/'));
+  final twemojiPackageAbsolutePath =
+      packageUri!.toFilePath().substring(0, packageUri.toFilePath().lastIndexOf('/'));
 
   final assetsPath = '$twemojiPackageAbsolutePath/assets';
   final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
