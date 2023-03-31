@@ -17,6 +17,8 @@ Future<void> main(List<String> args) async {
   // out of the /bin directory.
   final twemojiPackageAbsolutePath = Directory(Platform.script.toFilePath()).parent.parent.path;
 
+  print(twemojiPackageAbsolutePath);
+
   final assetsPath = '$twemojiPackageAbsolutePath/assets';
   final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
   final allAssetsDirectory = Directory(allAssetsPath);
